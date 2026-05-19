@@ -30,6 +30,7 @@ public class CharacterController2D : MonoBehaviour
     private BoxCollider2D _boxCollider2d;
     private float _startGravityScale;
 
+    private Vector3 _startAttackPosition;
     private bool _isGrounded;
     private bool _isJumping;
     private bool _isCollidingWall;
@@ -56,6 +57,7 @@ public class CharacterController2D : MonoBehaviour
     private void Start()
     {
         _startGravityScale = _rigidBody2d.gravityScale;
+        _startAttackPosition = _attackCollider.transform.localPosition;
     }
 
     private void Update()
@@ -78,7 +80,15 @@ public class CharacterController2D : MonoBehaviour
 
         if (!isMoving) return;
 
-        _spriteRenderer.flipX = _moveDirection.x < 0;
+        bool shouldFlipOnX = _moveDirection.x < 0;
+        _spriteRenderer.flipX = shouldFlipOnX;
+        _attackCollider.transform.localPosition = new Vector3(FlipAttackCollider(shouldFlipOnX), _startAttackPosition.y, _startAttackPosition.z);
+    }
+
+    private float FlipAttackCollider(bool shouldFlipOnX)
+    {
+        if (shouldFlipOnX) return -_startAttackPosition.x;
+        else return _startAttackPosition.x;
     }
 
     private void CheckForGround()

@@ -207,12 +207,12 @@ TextureImporter:
       name: Thief_anim_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 127
-        width: 19
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 15
+        y: 128
+        width: 17
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: Thief_anim_1
       rect:
         serializedVersion: 2
-        x: 62
-        y: 127
-        width: 19
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 63
+        y: 128
+        width: 17
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,12 +251,12 @@ TextureImporter:
       name: Thief_anim_2
       rect:
         serializedVersion: 2
-        x: 110
-        y: 127
-        width: 19
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 111
+        y: 128
+        width: 17
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: Thief_anim_3
       rect:
         serializedVersion: 2
-        x: 158
-        y: 127
-        width: 19
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 159
+        y: 128
+        width: 17
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: Thief_anim_4
       rect:
         serializedVersion: 2
-        x: 206
-        y: 127
-        width: 19
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 207
+        y: 128
+        width: 17
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: Thief_anim_5
       rect:
         serializedVersion: 2
-        x: 254
-        y: 127
-        width: 19
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 255
+        y: 128
+        width: 17
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -339,12 +339,12 @@ TextureImporter:
       name: Thief_anim_6
       rect:
         serializedVersion: 2
-        x: 302
-        y: 127
-        width: 19
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 303
+        y: 128
+        width: 17
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -361,12 +361,12 @@ TextureImporter:
       name: Thief_anim_7
       rect:
         serializedVersion: 2
-        x: 350
-        y: 127
-        width: 19
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 351
+        y: 128
+        width: 17
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -383,12 +383,12 @@ TextureImporter:
       name: Thief_anim_8
       rect:
         serializedVersion: 2
-        x: 13
-        y: 96
-        width: 21
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 14
+        y: 97
+        width: 19
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -405,12 +405,12 @@ TextureImporter:
       name: Thief_anim_9
       rect:
         serializedVersion: 2
-        x: 61
-        y: 97
-        width: 21
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 62
+        y: 98
+        width: 19
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -427,12 +427,12 @@ TextureImporter:
       name: Thief_anim_10
       rect:
         serializedVersion: 2
-        x: 109
-        y: 96
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 110
+        y: 97
+        width: 19
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -449,12 +449,12 @@ TextureImporter:
       name: Thief_anim_11
       rect:
         serializedVersion: 2
-        x: 158
-        y: 95
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 159
+        y: 96
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -471,12 +471,12 @@ TextureImporter:
       name: Thief_anim_12
       rect:
         serializedVersion: 2
-        x: 208
-        y: 96
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 209
+        y: 97
+        width: 13
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -493,12 +493,12 @@ TextureImporter:
       name: Thief_anim_13
       rect:
         serializedVersion: 2
-        x: 257
-        y: 97
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 258
+        y: 98
+        width: 12
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -515,12 +515,12 @@ TextureImporter:
       name: Thief_anim_14
       rect:
         serializedVersion: 2
-        x: 302
-        y: 95
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 303
+        y: 96
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -537,12 +537,12 @@ TextureImporter:
       name: Thief_anim_15
       rect:
         serializedVersion: 2
-        x: 15
-        y: 63
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -559,12 +559,12 @@ TextureImporter:
       name: Thief_anim_16
       rect:
         serializedVersion: 2
-        x: 62
-        y: 63
-        width: 19
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 63
+        y: 64
+        width: 17
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -581,12 +581,12 @@ TextureImporter:
       name: Thief_anim_17
       rect:
         serializedVersion: 2
-        x: 111
-        y: 63
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 112
+        y: 64
+        width: 25
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -603,12 +603,12 @@ TextureImporter:
       name: Thief_anim_18
       rect:
         serializedVersion: 2
-        x: 164
-        y: 63
-        width: 20
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 165
+        y: 64
+        width: 18
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -625,12 +625,12 @@ TextureImporter:
       name: Thief_anim_19
       rect:
         serializedVersion: 2
-        x: 213
-        y: 63
-        width: 20
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 214
+        y: 64
+        width: 18
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -647,12 +647,12 @@ TextureImporter:
       name: Thief_anim_20
       rect:
         serializedVersion: 2
-        x: 257
-        y: 63
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 258
+        y: 64
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -669,12 +669,12 @@ TextureImporter:
       name: Thief_anim_21
       rect:
         serializedVersion: 2
-        x: 12
-        y: 31
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 13
+        y: 32
+        width: 19
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -691,12 +691,12 @@ TextureImporter:
       name: Thief_anim_22
       rect:
         serializedVersion: 2
-        x: 57
-        y: 31
-        width: 25
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 58
+        y: 32
+        width: 23
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -713,12 +713,12 @@ TextureImporter:
       name: Thief_anim_23
       rect:
         serializedVersion: 2
-        x: 105
-        y: 31
-        width: 24
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 106
+        y: 32
+        width: 22
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -735,12 +735,12 @@ TextureImporter:
       name: Thief_anim_24
       rect:
         serializedVersion: 2
-        x: 152
-        y: 31
-        width: 24
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 153
+        y: 32
+        width: 22
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -757,12 +757,12 @@ TextureImporter:
       name: Thief_anim_25
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 1
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -779,12 +779,12 @@ TextureImporter:
       name: Thief_anim_26
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 1
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -801,7 +801,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 350681d9be1a247969b0b38fa42943e2
     internalID: 0
     vertices: []
     indices: 
@@ -809,7 +809,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Thief_anim_0: 6755236944495837895
       Thief_anim_1: 1300373889767536862
