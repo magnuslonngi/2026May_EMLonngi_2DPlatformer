@@ -9,7 +9,6 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _moveThreshold = 0.1f;
     [SerializeField] private float _jumpDistance = 5f;
-    [SerializeField] private float _wallSlideMaxSpeed = 3f;
 
     [Header("Attack")]
     [SerializeField] private GameObject _attackCollider;
@@ -31,6 +30,9 @@ public class CharacterController2D : MonoBehaviour
     private float _startGravityScale;
 
     private Vector3 _startAttackPosition;
+    private bool _isHeavyAttacking;
+    private bool _isChargingComplete;
+
     private bool _isGrounded;
     private bool _isJumping;
     private bool _isCollidingWall;
@@ -42,22 +44,26 @@ public class CharacterController2D : MonoBehaviour
     private int _isGroundedHash;
     private int _isJumpingHash;
     private int _isAttackingHash;
+    private int _isChargingHash;
+    private int _isHeavyAttackingHash;
 
     private void Awake()
     {
         _rigidBody2d = GetComponent<Rigidbody2D>();
         _boxCollider2d = GetComponent<BoxCollider2D>();
-
-        _isMovingHash = Animator.StringToHash("IsMoving");
-        _isGroundedHash = Animator.StringToHash("IsGrounded");
-        _isJumpingHash = Animator.StringToHash("IsJumping");
-        _isAttackingHash = Animator.StringToHash("IsAttacking");
     }
 
     private void Start()
     {
         _startGravityScale = _rigidBody2d.gravityScale;
         _startAttackPosition = _attackCollider.transform.localPosition;
+
+        _isMovingHash = Animator.StringToHash("IsMoving");
+        _isGroundedHash = Animator.StringToHash("IsGrounded");
+        _isJumpingHash = Animator.StringToHash("IsJumping");
+        _isAttackingHash = Animator.StringToHash("IsAttacking");
+        _isChargingHash = Animator.StringToHash("IsCharging");
+        _isHeavyAttackingHash = Animator.StringToHash("IsHeavyAttacking");
     }
 
     private void Update()
@@ -113,12 +119,33 @@ public class CharacterController2D : MonoBehaviour
 
     public void Attack()
     {
+        if (_isHeavyAttacking) return;
+
         _animator.SetBool(_isAttackingHash, true);
+    }
+
+    public void HeavyCharge()
+    {
+        _isChargingComplete = true;
+        _animator.SetBool(_isChargingHash, true);
+    }
+
+    public void HeavyAttack()
+    {
+        if (!_isChargingComplete) return;
+
+        _isHeavyAttacking = true;
+        _animator.SetBool(_isHeavyAttackingHash, true);
     }
 
     public void DisableAttackAnimation()
     {
+        _isHeavyAttacking = false;
+        _isChargingComplete = false;
+
         _animator.SetBool(_isAttackingHash, false); 
+        _animator.SetBool(_isHeavyAttackingHash, false);
+        _animator.SetBool(_isChargingHash, false);
     }
 
     public void DisableAttackCollider()

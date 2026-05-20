@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private InputActionReference _moveInput;
     [SerializeField] private InputActionReference _jumpInput;
     [SerializeField] private InputActionReference _attackInput;
+    [SerializeField] private InputActionReference _heavyAttackInput;
     [SerializeField] private InputActionReference _dashInput;
 
     private CharacterController2D _characterController2d;
@@ -24,6 +25,8 @@ public class PlayerInput : MonoBehaviour
         _jumpInput.action.performed += OnJump;
 
         _attackInput.action.performed += OnAttack;
+        _heavyAttackInput.action.performed += OnHeavyCharge;
+        _heavyAttackInput.action.canceled += OnHeavyAttack;
 
         _dashInput.action.performed += OnDash;
     }
@@ -36,6 +39,9 @@ public class PlayerInput : MonoBehaviour
         _jumpInput.action.performed -= OnJump;
 
         _attackInput.action.performed -= OnAttack;
+
+        _heavyAttackInput.action.performed -= OnHeavyCharge;
+        _heavyAttackInput.action.canceled -= OnHeavyAttack;
 
         _dashInput.action.performed -= OnDash;
     }
@@ -53,6 +59,16 @@ public class PlayerInput : MonoBehaviour
     private void OnAttack(InputAction.CallbackContext context)
     {
         _characterController2d.Attack();
+    }
+
+    private void OnHeavyCharge(InputAction.CallbackContext context)
+    {
+        _characterController2d.HeavyCharge();
+    }
+
+    private void OnHeavyAttack(InputAction.CallbackContext context)
+    {
+        _characterController2d.HeavyAttack();
     }
 
     private void OnDash(InputAction.CallbackContext context)

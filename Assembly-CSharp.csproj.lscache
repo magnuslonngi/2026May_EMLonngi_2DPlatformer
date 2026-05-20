@@ -50,10 +50,13 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 /warnaserror+:NU1605
 
 [sourceFiles]
-Assets/Scripts/
+Assets/Scripts/Character/
  CharacterAnimatorNotifier.cs
  CharacterController2D.cs
- PlayerInput.cs
+Assets/Scripts/DamageSystem/
+ HitCollider.cs
+ HurtCollider.cs
+Assets/Scripts/Player/PlayerInput.cs
 Temp/obj/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]
