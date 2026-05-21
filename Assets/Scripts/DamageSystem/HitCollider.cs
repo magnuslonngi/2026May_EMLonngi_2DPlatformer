@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class HitCollider : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] internal float _damage = 5f;
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HurtCollider hurtCollider = other.GetComponent<HurtCollider>();
+        hurtCollider?.NotifyHit(this);
     }
 }

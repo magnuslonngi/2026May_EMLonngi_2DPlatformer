@@ -54,6 +54,8 @@ Assets/Scripts/Character/
  CharacterAnimatorNotifier.cs
  CharacterController2D.cs
 Assets/Scripts/DamageSystem/
+ Health.cs
+ HealthUI.cs
  HitCollider.cs
  HurtCollider.cs
 Assets/Scripts/Player/PlayerInput.cs

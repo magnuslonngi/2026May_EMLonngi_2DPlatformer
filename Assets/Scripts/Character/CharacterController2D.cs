@@ -24,6 +24,9 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private float _jumpAnimationDuration = 0.2f;
 
+    private Health _health;
+    private bool _isDead;
+
     private Vector2 _moveDirection = Vector2.zero;
     private Rigidbody2D _rigidBody2d;
     private BoxCollider2D _boxCollider2d;
@@ -46,11 +49,15 @@ public class CharacterController2D : MonoBehaviour
     private int _isAttackingHash;
     private int _isChargingHash;
     private int _isHeavyAttackingHash;
+    private int _isDeadHash;
 
     private void Awake()
     {
         _rigidBody2d = GetComponent<Rigidbody2D>();
         _boxCollider2d = GetComponent<BoxCollider2D>();
+
+        _health = GetComponent<Health>();
+        _health.OnHealthDeplete.AddListener(OnPlayerDead);
     }
 
     private void Start()
@@ -64,10 +71,13 @@ public class CharacterController2D : MonoBehaviour
         _isAttackingHash = Animator.StringToHash("IsAttacking");
         _isChargingHash = Animator.StringToHash("IsCharging");
         _isHeavyAttackingHash = Animator.StringToHash("IsHeavyAttacking");
+        _isDeadHash = Animator.StringToHash("IsDead");
     }
 
     private void Update()
     {
+        if (_isDead) return; 
+
         if (!_isDashing)
         {
             _rigidBody2d.linearVelocityX = _speed * _moveDirection.x;
@@ -77,6 +87,21 @@ public class CharacterController2D : MonoBehaviour
         CheckForWall();
 
         UpdateAnimation();
+    }
+
+    private void OnPlayerDead()
+    {
+        _isDead = true;
+        _animator.SetBool(_isDeadHash, true);
+
+        _rigidBody2d.bodyType = RigidbodyType2D.Static;
+        _rigidBody2d.simulated = false;
+        _boxCollider2d.enabled = false;
+
+        if (TryGetComponent(out PlayerInput playerInput))
+        {
+            playerInput.enabled = false;
+        }
     }
 
     private void UpdateAnimation()

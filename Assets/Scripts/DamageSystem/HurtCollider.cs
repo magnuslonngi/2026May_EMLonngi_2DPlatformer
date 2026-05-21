@@ -1,16 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HurtCollider : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public UnityEvent<float> OnHitRecieved;
 
-    // Update is called once per frame
-    void Update()
+    public void NotifyHit(HitCollider hitCollider)
     {
-        
+        OnHitRecieved?.Invoke(hitCollider._damage);
     }
 }

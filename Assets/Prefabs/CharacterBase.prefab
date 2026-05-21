@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2347553428881687014}
   - component: {fileID: 7955125389582265038}
   - component: {fileID: 5535780501950546436}
+  - component: {fileID: 3935085632065477569}
+  - component: {fileID: 9065552662393531708}
   m_Layer: 2
   m_Name: CharacterBase
   m_TagString: Untagged
@@ -61,7 +63,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &7955125389582265038
@@ -125,7 +127,6 @@ MonoBehaviour:
   _speed: 8
   _moveThreshold: 0.1
   _jumpDistance: 10.5
-  _wallSlideMaxSpeed: 3
   _attackCollider: {fileID: 8379856095050313360}
   _dashSpeed: 20
   _dashDuration: 0.2
@@ -134,6 +135,43 @@ MonoBehaviour:
   _animator: {fileID: 5441823924244044081}
   _trailRenderer: {fileID: 239170041269520441}
   _jumpAnimationDuration: 0.4
+--- !u!114 &3935085632065477569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355700637712841512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fd69ac2993549179793e88e00ed15f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HurtCollider
+  OnHitRecieved:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &9065552662393531708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355700637712841512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c70c5b4c4884861a990304c0b1db96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _healthPoints: 20
+  OnHealthSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthDeplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4929303361373089447
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6385480963257502448}
   - component: {fileID: 1966094384933563578}
+  - component: {fileID: 4560878646798836076}
   m_Layer: 2
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -490,3 +529,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.0031276, y: 2.0073502}
   m_EdgeRadius: 0
+--- !u!114 &4560878646798836076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379856095050313360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d516e63bf87a4c708340b1613e88e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitCollider
+  _damage: 5
