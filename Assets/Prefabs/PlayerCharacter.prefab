@@ -8,17 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2347553428881687014, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2355700637712841512, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 2355700637712841512, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355700637712841512, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4328292988938969009, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.9
       objectReference: {fileID: 0}
     - target: {fileID: 4328292988938969009, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 4328292988938969009, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51,6 +63,18 @@ PrefabInstance:
     - target: {fileID: 4328292988938969009, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929303361373089447, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738780986846781172, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379856095050313360, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

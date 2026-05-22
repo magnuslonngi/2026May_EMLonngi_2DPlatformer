@@ -58,7 +58,9 @@ Assets/Scripts/DamageSystem/
  HealthUI.cs
  HitCollider.cs
  HurtCollider.cs
-Assets/Scripts/Player/PlayerInput.cs
+Assets/Scripts/
+ Enemy/IAController.cs
+ Player/PlayerInput.cs
 Temp/obj/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]

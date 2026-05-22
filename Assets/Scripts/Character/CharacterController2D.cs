@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
@@ -24,12 +25,15 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private float _jumpAnimationDuration = 0.2f;
 
+    public UnityEvent OnCharacterDead;
+
     private Health _health;
     private bool _isDead;
 
     private Vector2 _moveDirection = Vector2.zero;
     private Rigidbody2D _rigidBody2d;
     private BoxCollider2D _boxCollider2d;
+    private int _enviromentLayerMask;
     private float _startGravityScale;
 
     private Vector3 _startAttackPosition;
@@ -65,6 +69,8 @@ public class CharacterController2D : MonoBehaviour
         _startGravityScale = _rigidBody2d.gravityScale;
         _startAttackPosition = _attackCollider.transform.localPosition;
 
+        _enviromentLayerMask = LayerMask.NameToLayer("Enviroment");
+
         _isMovingHash = Animator.StringToHash("IsMoving");
         _isGroundedHash = Animator.StringToHash("IsGrounded");
         _isJumpingHash = Animator.StringToHash("IsJumping");
@@ -98,10 +104,7 @@ public class CharacterController2D : MonoBehaviour
         _rigidBody2d.simulated = false;
         _boxCollider2d.enabled = false;
 
-        if (TryGetComponent(out PlayerInput playerInput))
-        {
-            playerInput.enabled = false;
-        }
+        OnCharacterDead?.Invoke();
     }
 
     private void UpdateAnimation()
@@ -126,9 +129,9 @@ public class CharacterController2D : MonoBehaviour
     {
         Vector2 colliderSize = new(_boxCollider2d.size.x, 0.5f);
 
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.down, 1f);
+        RaycastHit2D raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.down, 1f, _enviromentLayerMask);
 
-        _isGrounded = raycastHit2D && raycastHit2D.collider.CompareTag("Enviroment");
+        _isGrounded = raycastHit2D;
         _animator.SetBool(_isGroundedHash, _isGrounded);
     }
 
@@ -137,8 +140,8 @@ public class CharacterController2D : MonoBehaviour
         Vector2 colliderSize = new(0.5f, _boxCollider2d.size.y);
         Vector2 rayDirection = new(_moveDirection.x, 0);
 
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, rayDirection, 1f);
-        _isCollidingWall = raycastHit2D && raycastHit2D.collider.CompareTag("Enviroment");
+        RaycastHit2D raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, rayDirection, 1f, _enviromentLayerMask);
+        _isCollidingWall = raycastHit2D;
         if (_isDashing && _isCollidingWall) CancelDash();
     }
 

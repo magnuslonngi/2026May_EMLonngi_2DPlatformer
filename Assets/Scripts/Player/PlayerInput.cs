@@ -15,6 +15,12 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         _characterController2d = GetComponent<CharacterController2D>();
+        _characterController2d.OnCharacterDead.AddListener(OnCharacterDead);
+    }
+
+    private void OnCharacterDead()
+    {
+        enabled = false;
     }
 
     private void OnEnable()
