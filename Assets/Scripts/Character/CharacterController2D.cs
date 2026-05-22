@@ -6,6 +6,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
 {
+
+#region PublicAndEditorVariables
+
     [Header("Movement")]
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _moveThreshold = 0.1f;
@@ -25,10 +28,19 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private float _jumpAnimationDuration = 0.2f;
 
+    [Header("Events")]
     public UnityEvent OnCharacterDead;
+
+#endregion PublicAndEditorVariables
+
+#region HealthVariables
 
     private Health _health;
     private bool _isDead;
+
+#endregion HealthVariables
+
+#region PhysicsVariables
 
     private Vector2 _moveDirection = Vector2.zero;
     private Rigidbody2D _rigidBody2d;
@@ -36,16 +48,35 @@ public class CharacterController2D : MonoBehaviour
     private int _enviromentLayerMask;
     private float _startGravityScale;
 
+#endregion PhysicsVariables
+
+#region AttackVariables
+
     private Vector3 _startAttackPosition;
     private bool _isHeavyAttacking;
     private bool _isChargingComplete;
 
-    private bool _isGrounded;
+#endregion AttackVariables
+
+#region JumpVariables
+
     private bool _isJumping;
+    private bool _isGrounded;
+    private bool _isCollidingCealing;
     private bool _isCollidingWall;
+    private Coroutine _updateJumpStateRoutine;
+
+#endregion Jumpvariables
+
+#region DashVariables
 
     private bool _canDash = true;
     private bool _isDashing = false;
+    private Coroutine _updateDashStateRoutine;
+
+#endregion DashVariables
+
+#region AnimatorHashVariables
 
     private int _isMovingHash;
     private int _isGroundedHash;
@@ -54,6 +85,10 @@ public class CharacterController2D : MonoBehaviour
     private int _isChargingHash;
     private int _isHeavyAttackingHash;
     private int _isDeadHash;
+
+#endregion AnimationHashVariables
+
+#region UnityLifeCycle
 
     private void Awake()
     {
@@ -71,29 +106,30 @@ public class CharacterController2D : MonoBehaviour
 
         _enviromentLayerMask = LayerMask.NameToLayer("Enviroment");
 
-        _isMovingHash = Animator.StringToHash("IsMoving");
-        _isGroundedHash = Animator.StringToHash("IsGrounded");
-        _isJumpingHash = Animator.StringToHash("IsJumping");
-        _isAttackingHash = Animator.StringToHash("IsAttacking");
-        _isChargingHash = Animator.StringToHash("IsCharging");
-        _isHeavyAttackingHash = Animator.StringToHash("IsHeavyAttacking");
-        _isDeadHash = Animator.StringToHash("IsDead");
+        AssignAnimatorHashes();
     }
 
     private void Update()
     {
         if (_isDead) return; 
 
-        if (!_isDashing)
-        {
-            _rigidBody2d.linearVelocityX = _speed * _moveDirection.x;
-        }
+        Move();
 
+        // Checks for character state
         CheckForGround();
+        CheckForCealing();
         CheckForWall();
+
+        // Checks for ability states
+        CheckForJump();
+        CheckForDash();
 
         UpdateAnimation();
     }
+
+#endregion UnityLifeCycle
+
+#region HealthManagement
 
     private void OnPlayerDead()
     {
@@ -107,6 +143,38 @@ public class CharacterController2D : MonoBehaviour
         OnCharacterDead?.Invoke();
     }
 
+#endregion HealthManagement
+
+#region Movement
+
+    private void Move()
+    {
+        if (_isDashing) return;
+        
+        _rigidBody2d.linearVelocityX = _speed * _moveDirection.x;
+    }
+
+    public void SetMoveDirection(Vector2 direction)
+    {
+        _moveDirection = direction;
+    }
+
+#endregion Movement
+
+#region Animation
+
+    private void AssignAnimatorHashes()
+    {
+        
+        _isMovingHash = Animator.StringToHash("IsMoving");
+        _isGroundedHash = Animator.StringToHash("IsGrounded");
+        _isJumpingHash = Animator.StringToHash("IsJumping");
+        _isAttackingHash = Animator.StringToHash("IsAttacking");
+        _isChargingHash = Animator.StringToHash("IsCharging");
+        _isHeavyAttackingHash = Animator.StringToHash("IsHeavyAttacking");
+        _isDeadHash = Animator.StringToHash("IsDead");
+    }
+
     private void UpdateAnimation()
     {
         bool isMoving = Math.Abs(_moveDirection.x) > _moveThreshold;
@@ -116,7 +184,9 @@ public class CharacterController2D : MonoBehaviour
 
         bool shouldFlipOnX = _moveDirection.x < 0;
         _spriteRenderer.flipX = shouldFlipOnX;
-        _attackCollider.transform.localPosition = new Vector3(FlipAttackCollider(shouldFlipOnX), _startAttackPosition.y, _startAttackPosition.z);
+
+        float colliderPositionX = FlipAttackCollider(shouldFlipOnX);
+        _attackCollider.transform.localPosition = new(colliderPositionX, _startAttackPosition.y, _startAttackPosition.z);
     }
 
     private float FlipAttackCollider(bool shouldFlipOnX)
@@ -125,11 +195,14 @@ public class CharacterController2D : MonoBehaviour
         else return _startAttackPosition.x;
     }
 
+#endregion Animation
+
+#region CharacterState
+
     private void CheckForGround()
     {
         Vector2 colliderSize = new(_boxCollider2d.size.x, 0.5f);
-
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.down, 1f, _enviromentLayerMask);
+        var raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.down, 1f, _enviromentLayerMask);
 
         _isGrounded = raycastHit2D;
         _animator.SetBool(_isGroundedHash, _isGrounded);
@@ -139,11 +212,22 @@ public class CharacterController2D : MonoBehaviour
     {
         Vector2 colliderSize = new(0.5f, _boxCollider2d.size.y);
         Vector2 rayDirection = new(_moveDirection.x, 0);
+        var raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, rayDirection, 1f, _enviromentLayerMask);
 
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, rayDirection, 1f, _enviromentLayerMask);
         _isCollidingWall = raycastHit2D;
-        if (_isDashing && _isCollidingWall) CancelDash();
     }
+
+    private void CheckForCealing()
+    {
+        Vector2 colliderSize = new(_boxCollider2d.size.x, 0.5f);
+        var raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.up, 1f, _enviromentLayerMask);
+
+        _isCollidingCealing = raycastHit2D;
+    }
+
+#endregion CharacterState
+
+#region Attack
 
     public void Attack()
     {
@@ -186,27 +270,49 @@ public class CharacterController2D : MonoBehaviour
         _attackCollider.SetActive(true);
     }
 
+#endregion Attack
+
+#region Jump
+
     public void Jump()
     {
         if (!_isGrounded) return;
 
         _isJumping = true;
         _rigidBody2d.linearVelocityY = _jumpDistance;
-        _animator.SetBool(_isJumpingHash, _isJumping);
+        _animator.SetBool(_isJumpingHash, true);
         _trailRenderer.emitting = true;
 
-        StartCoroutine(UpdateJumpState());
+        _updateJumpStateRoutine = StartCoroutine(UpdateJumpState());
     }
 
     private IEnumerator UpdateJumpState()
     {
         yield return new WaitForSeconds(_jumpAnimationDuration);
 
-        _isJumping = false;
-        _animator.SetBool(_isJumpingHash, _isJumping);
+        CancelJump();
 
         if (!_isDashing) _trailRenderer.emitting = false;
     }
+
+    private void CancelJump()
+    {
+        _isJumping = false;
+        _animator.SetBool(_isJumpingHash, false);
+    }
+
+    private void CheckForJump()
+    {
+        if (_isJumping && _isCollidingCealing)
+        {
+            CancelJump();
+            StopCoroutine(_updateJumpStateRoutine);
+        }
+    }
+
+#endregion Jump
+
+#region Dash
 
     public void Dash()
     {
@@ -220,15 +326,7 @@ public class CharacterController2D : MonoBehaviour
 
         _trailRenderer.emitting = true;
 
-        StartCoroutine(UpdateDashState());
-    }
-
-    private void CancelDash()
-    {
-        _isDashing = false;
-        _rigidBody2d.gravityScale = _startGravityScale;
-        
-        if (!_isJumping) _trailRenderer.emitting = false;
+        _updateDashStateRoutine = StartCoroutine(UpdateDashState());
     }
 
     private IEnumerator UpdateDashState()
@@ -242,8 +340,24 @@ public class CharacterController2D : MonoBehaviour
         _canDash = true;
     }
 
-    public void SetMoveDirection(Vector2 direction)
+    private void CancelDash()
     {
-        _moveDirection = direction;
+        _isDashing = false;
+        _rigidBody2d.gravityScale = _startGravityScale;
+        
+        if (!_isJumping) _trailRenderer.emitting = false;
     }
+
+    private void CheckForDash()
+    {
+        if (_isDashing && _isCollidingWall)
+        {
+            CancelDash();  
+            StopCoroutine(_updateDashStateRoutine);
+            _canDash = true;
+        }
+    }
+
+#endregion Dash
+
 }
