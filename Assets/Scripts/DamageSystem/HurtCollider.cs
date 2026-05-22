@@ -7,6 +7,6 @@ public class HurtCollider : MonoBehaviour
 
     public void NotifyHit(HitCollider hitCollider)
     {
-        OnHitRecieved?.Invoke(hitCollider._damage);
+        OnHitRecieved?.Invoke(hitCollider.GetDamage());
     }
 }

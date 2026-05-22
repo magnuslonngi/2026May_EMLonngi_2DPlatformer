@@ -296,10 +296,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 8379856095050313360, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -349,4 +345,3 @@ MonoBehaviour:
   _targetLeaveRange: 3
   _attackRange: 2.5
   _attackDelay: 0.8
-  _target: {fileID: 0}

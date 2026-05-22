@@ -127,7 +127,9 @@ MonoBehaviour:
   _speed: 8
   _moveThreshold: 0.1
   _jumpDistance: 10.5
-  _attackCollider: {fileID: 8379856095050313360}
+  _attackCollider: {fileID: 1966094384933563578}
+  _baseDamage: 5
+  _heavyDamage: 8
   _dashSpeed: 20
   _dashDuration: 0.2
   _dashCooldown: 0.8
@@ -135,6 +137,9 @@ MonoBehaviour:
   _animator: {fileID: 5441823924244044081}
   _trailRenderer: {fileID: 239170041269520441}
   _jumpAnimationDuration: 0.4
+  OnCharacterDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3935085632065477569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6385480963257502448
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +495,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8379856095050313360}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

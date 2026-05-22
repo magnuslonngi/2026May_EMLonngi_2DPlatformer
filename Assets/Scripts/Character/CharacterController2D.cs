@@ -15,7 +15,10 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float _jumpDistance = 5f;
 
     [Header("Attack")]
-    [SerializeField] private GameObject _attackCollider;
+    [SerializeField] private BoxCollider2D _attackCollider;
+    [SerializeField] private float _baseDamage = 5f;
+    [SerializeField] private float _heavyDamage = 8f;
+    private HitCollider _hitCollider;
 
     [Header("Dash")]
     [SerializeField] private float _dashSpeed = 20f;
@@ -95,6 +98,7 @@ public class CharacterController2D : MonoBehaviour
     {
         _rigidBody2d = GetComponent<Rigidbody2D>();
         _boxCollider2d = GetComponent<BoxCollider2D>();
+        _hitCollider = GetComponentInChildren<HitCollider>();
 
         _health = GetComponent<Health>();
         _health.OnHealthDeplete.AddListener(OnPlayerDead);
@@ -244,6 +248,7 @@ public class CharacterController2D : MonoBehaviour
     {
         if (_isHeavyAttacking) return;
 
+        _hitCollider.SetDamage(_baseDamage);
         _animator.SetBool(_isAttackingHash, true);
     }
 
@@ -258,6 +263,7 @@ public class CharacterController2D : MonoBehaviour
         if (!_isChargingComplete) return;
 
         _isHeavyAttacking = true;
+        _hitCollider.SetDamage(_heavyDamage);
         _animator.SetBool(_isHeavyAttackingHash, true);
     }
 
@@ -271,14 +277,14 @@ public class CharacterController2D : MonoBehaviour
         _animator.SetBool(_isChargingHash, false);
     }
 
-    public void DisableAttackCollider()
-    {
-        _attackCollider.SetActive(false);
-    }
-
     public void EnableAttackCollider()
     {
-        _attackCollider.SetActive(true);
+        _attackCollider.enabled = true;
+    }
+
+    public void DisableAttackCollider()
+    {
+        _attackCollider.enabled = false;
     }
 
 #endregion Attack
