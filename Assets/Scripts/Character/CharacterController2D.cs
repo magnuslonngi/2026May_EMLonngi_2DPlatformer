@@ -61,6 +61,7 @@ public class CharacterController2D : MonoBehaviour
 #region JumpVariables
 
     private bool _isJumping;
+    private bool _isWallJumping;
     private bool _isGrounded;
     private bool _isCollidingCealing;
     private bool _isCollidingWall;
@@ -149,7 +150,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Move()
     {
-        if (_isDashing) return;
+        if (_isDashing || _isWallJumping) return;
         
         _rigidBody2d.linearVelocityX = _speed * _moveDirection.x;
     }
@@ -180,16 +181,26 @@ public class CharacterController2D : MonoBehaviour
         bool isMoving = Math.Abs(_moveDirection.x) > _moveThreshold;
         _animator.SetBool(_isMovingHash, isMoving);
 
-        if (!isMoving) return;
+        if (!isMoving || _isDashing || _isWallJumping) return;
 
+        FlipCharacter();
+    }
+
+    private void FlipCharacter()
+    {
         bool shouldFlipOnX = _moveDirection.x < 0;
         _spriteRenderer.flipX = shouldFlipOnX;
 
-        float colliderPositionX = FlipAttackCollider(shouldFlipOnX);
+        FlipAttackCollider(shouldFlipOnX);
+    }
+
+    private void FlipAttackCollider(bool shouldFlipOnX)
+    {
+        float colliderPositionX = FlipAttackPosition(shouldFlipOnX);
         _attackCollider.transform.localPosition = new(colliderPositionX, _startAttackPosition.y, _startAttackPosition.z);
     }
 
-    private float FlipAttackCollider(bool shouldFlipOnX)
+    private float FlipAttackPosition(bool shouldFlipOnX)
     {
         if (shouldFlipOnX) return -_startAttackPosition.x;
         else return _startAttackPosition.x;
@@ -276,14 +287,45 @@ public class CharacterController2D : MonoBehaviour
 
     public void Jump()
     {
+        if (_isCollidingWall && !_isGrounded && _moveDirection != Vector2.zero)
+        {
+            WallJump();
+            return;
+        }
+
         if (!_isGrounded) return;
 
         _isJumping = true;
+
         _rigidBody2d.linearVelocityY = _jumpDistance;
+
         _animator.SetBool(_isJumpingHash, true);
         _trailRenderer.emitting = true;
 
         _updateJumpStateRoutine = StartCoroutine(UpdateJumpState());
+    }
+
+    private void WallJump()
+    {
+        if (_isCollidingWall && !_isGrounded && _moveDirection != Vector2.zero)
+        {
+            CancelJump();
+            StopCoroutine(_updateJumpStateRoutine);
+
+            _isWallJumping = true;
+            _isJumping = true;
+
+            _rigidBody2d.linearVelocityY = _jumpDistance;
+            _rigidBody2d.linearVelocityX = _jumpDistance * -_moveDirection.x;
+
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
+            FlipAttackCollider(!_spriteRenderer.flipX);
+
+            _animator.SetBool(_isJumpingHash, true);
+            _trailRenderer.emitting = true;
+
+            _updateJumpStateRoutine = StartCoroutine(UpdateJumpState());
+        }
     }
 
     private IEnumerator UpdateJumpState()
@@ -298,6 +340,7 @@ public class CharacterController2D : MonoBehaviour
     private void CancelJump()
     {
         _isJumping = false;
+        _isWallJumping = false;
         _animator.SetBool(_isJumpingHash, false);
     }
 
