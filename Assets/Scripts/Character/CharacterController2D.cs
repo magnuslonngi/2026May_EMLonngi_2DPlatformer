@@ -14,6 +14,12 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float _moveThreshold = 0.1f;
     [SerializeField] private float _jumpDistance = 5f;
 
+    [Header("Collision Checkers")]
+    [SerializeField] private Transform _checkStartPoint;
+    [SerializeField] private float _groundCheckDistance = 1f;
+    [SerializeField] private float _wallCheckDistance = 1f;
+    [SerializeField] private float _cealingCheckDistance = 1f;
+
     [Header("Attack")]
     [SerializeField] private BoxCollider2D _attackCollider;
     [SerializeField] private float _baseDamage = 5f;
@@ -28,6 +34,7 @@ public class CharacterController2D : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator _animator;
+    [SerializeField] private bool _useTrailRenderer = true;
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private float _jumpAnimationDuration = 0.2f;
 
@@ -159,6 +166,16 @@ public class CharacterController2D : MonoBehaviour
         _rigidBody2d.linearVelocityX = _speed * _moveDirection.x;
     }
 
+    public bool IsCollidingWithWall()
+    {
+        return _isCollidingWall;
+    }
+
+    public Vector2 GetMoveDirection()
+    {
+        return _moveDirection;
+    }
+
     public void SetMoveDirection(Vector2 direction)
     {
         _moveDirection = direction;
@@ -214,28 +231,52 @@ public class CharacterController2D : MonoBehaviour
 
 #region CharacterState
 
+    // TODO: ADD SUPORT FOR COLLIDER OFFSET THAT CHANGES IN EDITOR
     private void CheckForGround()
     {
-        Vector2 colliderSize = new(_boxCollider2d.size.x, 0.5f);
-        var raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.down, 1f, _enviromentLayerMask);
+        // Makes the start position on the bottom edge of the collider.
+        float verticalStartPosition = _checkStartPoint.position.y - ((_boxCollider2d.size.y - _groundCheckDistance) / 2);
+        Vector2 startPosition = new(_checkStartPoint.position.x, verticalStartPosition);
+
+        Vector2 colliderSize = new(_boxCollider2d.size.x, _groundCheckDistance);
+        var raycastHit2D = Physics2D.BoxCast(startPosition, colliderSize, 0f, Vector2.down, _groundCheckDistance, _enviromentLayerMask);
 
         _isGrounded = raycastHit2D;
         _animator.SetBool(_isGroundedHash, _isGrounded);
     }
 
+    // TODO: ADD SUPORT FOR COLLIDER OFFSET THAT CHANGES IN EDITOR
     private void CheckForWall()
     {
-        Vector2 colliderSize = new(0.5f, _boxCollider2d.size.y);
+        if (_moveDirection.x == 0)
+        {
+            _isCollidingWall = false;
+            return;
+        }
+
+        // Makes the start position offset by the collider size so starts at the edge considering the move direction.
+        float horizontalStartPosition = _checkStartPoint.position.x + ((_boxCollider2d.size.x - _wallCheckDistance) / 2 * _moveDirection.x);
+        Vector2 startPosition = new(horizontalStartPosition, _checkStartPoint.position.y);
+
+        // The -0.2f is a bit of offset so it doesn't collide with the floor and detects walls for no reason.
+        float verticalColliderSize = _boxCollider2d.size.y - 0.2f;
+        Vector2 colliderSize = new(_wallCheckDistance, verticalColliderSize);
         Vector2 rayDirection = new(_moveDirection.x, 0);
-        var raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, rayDirection, 1f, _enviromentLayerMask);
+
+        var raycastHit2D = Physics2D.BoxCast(startPosition, colliderSize, 0f, rayDirection, _wallCheckDistance, _enviromentLayerMask);
 
         _isCollidingWall = raycastHit2D;
     }
 
+    // TODO: ADD SUPORT FOR COLLIDER OFFSET THAT CHANGES IN EDITOR
     private void CheckForCealing()
     {
-        Vector2 colliderSize = new(_boxCollider2d.size.x, 0.5f);
-        var raycastHit2D = Physics2D.BoxCast(transform.position, colliderSize, 0f, Vector2.up, 1f, _enviromentLayerMask);
+        // Makes the start position on the top edge of the collider.
+        float verticalStartPosition = _checkStartPoint.position.y + ((_boxCollider2d.size.y - _cealingCheckDistance) / 2);
+        Vector2 startPosition = new(_checkStartPoint.position.x, verticalStartPosition);
+
+        Vector2 colliderSize = new(_boxCollider2d.size.x, _cealingCheckDistance);
+        var raycastHit2D = Physics2D.BoxCast(startPosition, colliderSize, 0f, Vector2.up, _cealingCheckDistance, _enviromentLayerMask);
 
         _isCollidingCealing = raycastHit2D;
     }
@@ -306,7 +347,8 @@ public class CharacterController2D : MonoBehaviour
         _rigidBody2d.linearVelocityY = _jumpDistance;
 
         _animator.SetBool(_isJumpingHash, true);
-        _trailRenderer.emitting = true;
+
+        if (_useTrailRenderer) _trailRenderer.emitting = true;
 
         _updateJumpStateRoutine = StartCoroutine(UpdateJumpState());
     }
@@ -328,7 +370,8 @@ public class CharacterController2D : MonoBehaviour
             FlipAttackCollider(!_spriteRenderer.flipX);
 
             _animator.SetBool(_isJumpingHash, true);
-            _trailRenderer.emitting = true;
+
+            if (_useTrailRenderer) _trailRenderer.emitting = true;
 
             _updateJumpStateRoutine = StartCoroutine(UpdateJumpState());
         }
@@ -340,7 +383,7 @@ public class CharacterController2D : MonoBehaviour
 
         CancelJump();
 
-        if (!_isDashing) _trailRenderer.emitting = false;
+        if (_useTrailRenderer && !_isDashing) _trailRenderer.emitting = false;
     }
 
     private void CancelJump()
@@ -373,7 +416,7 @@ public class CharacterController2D : MonoBehaviour
         _rigidBody2d.gravityScale = 0;
         _rigidBody2d.linearVelocity = new Vector2(_moveDirection.x * _dashSpeed, 0);
 
-        _trailRenderer.emitting = true;
+        if (_useTrailRenderer) _trailRenderer.emitting = true;
 
         _updateDashStateRoutine = StartCoroutine(UpdateDashState());
     }
@@ -394,7 +437,7 @@ public class CharacterController2D : MonoBehaviour
         _isDashing = false;
         _rigidBody2d.gravityScale = _startGravityScale;
         
-        if (!_isJumping) _trailRenderer.emitting = false;
+        if (_useTrailRenderer && !_isJumping) _trailRenderer.emitting = false;
     }
 
     private void CheckForDash()
@@ -408,5 +451,62 @@ public class CharacterController2D : MonoBehaviour
     }
 
 #endregion Dash
+
+#region Debug
+
+// Debugs for the collision checkers functions
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        if(!Application.isPlaying) return;
+        
+        OnGroundCheckDrawGizmos();
+        OnWallCheckDrawGizmos();
+        OnCealingCheckDrawGizmos();
+    }
+
+    private void OnWallCheckDrawGizmos()
+    {
+        if (_moveDirection.x == 0) return;
+
+        float horizontalStartPosition = _checkStartPoint.position.x + ((_boxCollider2d.size.x - _wallCheckDistance) / 2 * _moveDirection.x);
+        float verticalColliderSize = _boxCollider2d.size.y - 0.2f;
+
+        Vector3 startPosition = new(horizontalStartPosition, _checkStartPoint.position.y, 0);
+        Vector3 direction = new Vector3(_moveDirection.x, 0, 0) * _wallCheckDistance;
+        Vector3 colliderSize = new Vector3(_wallCheckDistance, verticalColliderSize, 0);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(startPosition + direction, colliderSize);
+    }
+
+    private void OnGroundCheckDrawGizmos()
+    {
+        float verticalStartPosition = _checkStartPoint.position.y - ((_boxCollider2d.size.y - _groundCheckDistance) / 2);
+        Vector3 startPosition = new(_checkStartPoint.position.x, verticalStartPosition, 0);
+
+        Vector3 direction = new Vector3(0, 1, 0) * _groundCheckDistance;
+        Vector3 colliderSize = new Vector3(_boxCollider2d.size.x, _groundCheckDistance, 0);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(startPosition - direction, colliderSize);
+    }
+
+    private void OnCealingCheckDrawGizmos()
+    {
+        float verticalStartPosition = _checkStartPoint.position.y + ((_boxCollider2d.size.y - _cealingCheckDistance) / 2);
+        Vector3 startPosition = new(_checkStartPoint.position.x, verticalStartPosition, 0);
+
+        Vector3 direction = new Vector3(0, 1, 0) * _cealingCheckDistance;
+        Vector3 colliderSize = new Vector3(_boxCollider2d.size.x, _cealingCheckDistance, 0);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(startPosition + direction, colliderSize);    
+    }
+
+#endif
+
+#endregion Debug
 
 }

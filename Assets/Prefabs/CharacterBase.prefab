@@ -30,13 +30,14 @@ Transform:
   m_GameObject: {fileID: 2355700637712841512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.030375, y: -2.974, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6432869003459762128}
   - {fileID: 6512493330868524559}
   - {fileID: 6385480963257502448}
+  - {fileID: 1182552606448403761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2347553428881687014
@@ -62,7 +63,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -127,6 +128,10 @@ MonoBehaviour:
   _speed: 8
   _moveThreshold: 0.1
   _jumpDistance: 10.5
+  _checkStartPoint: {fileID: 1182552606448403761}
+  _groundCheckDistance: 0.25
+  _wallCheckDistance: 0.25
+  _cealingCheckDistance: 0.25
   _attackCollider: {fileID: 1966094384933563578}
   _baseDamage: 5
   _heavyDamage: 8
@@ -455,6 +460,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cdb30be5120498299af8381e7185e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimatorNotifier
+--- !u!1 &6105126095497322821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182552606448403761}
+  m_Layer: 0
+  m_Name: CheckStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1182552606448403761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105126095497322821}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4328292988938969009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8379856095050313360
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,4 +582,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d516e63bf87a4c708340b1613e88e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitCollider
-  _damage: 5

@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.07, y: 1.249}
+  m_AnchoredPosition: {x: 0, y: 1.7}
   m_SizeDelta: {x: 1.1129, y: 1.0594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4091624177304889053
@@ -202,15 +202,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1966094384933563578, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Size.x
-      value: 1.0912666
+      value: 1.1160889
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966094384933563578, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Size.y
+      value: 2.218337
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966094384933563578, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1966094384933563578, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Offset.x
-      value: -0.64061165
+      value: -0.8143654
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966094384933563578, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.105493605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2347553428881687014, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2355700637712841512, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Name
-      value: ThiefCharacter
+      value: WolfCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 2355700637712841512, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Layer
@@ -263,18 +279,22 @@ PrefabInstance:
     - target: {fileID: 5441823924244044081, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 164d1f6a106054e03a6a1d425e16641c, type: 2}
+      objectReference: {fileID: 22100000, guid: 3a2c42ee461f14caf886bc62d1b23412, type: 2}
     - target: {fileID: 5535780501950546436, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: _speed
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5535780501950546436, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: _baseDamage
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5535780501950546436, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: _heavyDamage
-      value: 15
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535780501950546436, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: _jumpDistance
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5738780986846781172, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Layer
@@ -282,19 +302,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6432869003459762128, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1783125
+      value: -0.1883987
       objectReference: {fileID: 0}
     - target: {fileID: 6432869003459762128, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.998996
+      value: -1.0716887
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512493330868524559, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512493330868524559, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 7955125389582265038, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Size.x
-      value: 1.2685323
+      value: 3.7767975
       objectReference: {fileID: 0}
     - target: {fileID: 7955125389582265038, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Size.y
-      value: 2.0196846
+      value: 2.126524
       objectReference: {fileID: 0}
     - target: {fileID: 7955125389582265038, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Offset.x
@@ -307,10 +335,14 @@ PrefabInstance:
     - target: {fileID: 8316558079517350437, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6755236944495837895, guid: 0a21e96f2c63646f38f76fb9c7506579, type: 3}
+      objectReference: {fileID: -3112195067975180470, guid: afb7602f2ec99fd4ba19c0fd8a9641fb, type: 3}
     - target: {fileID: 8379856095050313360, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065552662393531708, guid: d45cb4e0367d040d493585f4a1acb5a5, type: 3}
+      propertyPath: _healthPoints
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -357,14 +389,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IAController
   _useTargetDetection: 1
-  _targetDetectionRange: 8
+  _targetDetectionRange: 3
   _targetLeaveRange: 1
-  _attackRange: 2
-  _attackDelay: 1.2
-  _enablePatrol: 0
-  _enableJumpTimer: 0
-  _jumpCooldown: 2
+  _attackRange: 3
+  _attackDelay: 1
+  _enablePatrol: 1
+  _enableJumpTimer: 1
+  _jumpCooldown: 1
   _enableJumpOnDetect: 0
   _enableDashTimer: 0
   _dashCooldown: 2
-  _enableDashOnDetect: 1
+  _enableDashOnDetect: 0
