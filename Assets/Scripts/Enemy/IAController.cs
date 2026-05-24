@@ -48,8 +48,6 @@ public class IAController : MonoBehaviour
 
     private void Update()
     {
-        Attack();
-
         if (_enablePatrol && !_target) Patrol();
 
         if (_target && _canAttack) ChaseTarget();
