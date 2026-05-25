@@ -13,6 +13,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _moveThreshold = 0.1f;
     [SerializeField] private float _jumpDistance = 5f;
+    [SerializeField] private bool _isFlying = false;
 
     [Header("Collision Checkers")]
     [SerializeField] private Transform _checkStartPoint;
@@ -24,7 +25,6 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private BoxCollider2D _attackCollider;
     [SerializeField] private float _baseDamage = 5f;
     [SerializeField] private float _heavyDamage = 8f;
-    private HitCollider _hitCollider;
 
     [Header("Dash")]
     [SerializeField] private float _dashSpeed = 20f;
@@ -65,6 +65,7 @@ public class CharacterController2D : MonoBehaviour
     private Vector3 _startAttackPosition;
     private bool _isHeavyAttacking;
     private bool _isChargingComplete;
+    private HitCollider _hitCollider;
 
 #endregion AttackVariables
 
@@ -234,6 +235,13 @@ public class CharacterController2D : MonoBehaviour
     // TODO: ADD SUPORT FOR COLLIDER OFFSET THAT CHANGES IN EDITOR
     private void CheckForGround()
     {
+        if (_isFlying)
+        {
+            _isGrounded = true;
+            _animator.SetBool(_isGroundedHash, _isGrounded);
+            return;
+        }
+
         // Makes the start position on the bottom edge of the collider.
         float verticalStartPosition = _checkStartPoint.position.y - ((_boxCollider2d.size.y - _groundCheckDistance) / 2);
         Vector2 startPosition = new(_checkStartPoint.position.x, verticalStartPosition);

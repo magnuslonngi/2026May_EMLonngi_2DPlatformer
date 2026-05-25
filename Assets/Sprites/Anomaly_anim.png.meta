@@ -207,12 +207,12 @@ TextureImporter:
       name: Anomaly_anim_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 127
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 128
+        width: 14
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: Anomaly_anim_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 127
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 128
+        width: 14
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,12 +251,12 @@ TextureImporter:
       name: Anomaly_anim_2
       rect:
         serializedVersion: 2
-        x: 112
-        y: 127
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 113
+        y: 128
+        width: 14
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: Anomaly_anim_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 127
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 161
+        y: 128
+        width: 14
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: Anomaly_anim_4
       rect:
         serializedVersion: 2
-        x: 208
-        y: 127
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 209
+        y: 128
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: Anomaly_anim_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 127
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 257
+        y: 128
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -339,12 +339,12 @@ TextureImporter:
       name: Anomaly_anim_6
       rect:
         serializedVersion: 2
-        x: 15
-        y: 96
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 97
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -361,12 +361,12 @@ TextureImporter:
       name: Anomaly_anim_7
       rect:
         serializedVersion: 2
-        x: 63
-        y: 97
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 98
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -383,12 +383,12 @@ TextureImporter:
       name: Anomaly_anim_8
       rect:
         serializedVersion: 2
-        x: 111
-        y: 96
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 112
+        y: 97
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -405,12 +405,12 @@ TextureImporter:
       name: Anomaly_anim_9
       rect:
         serializedVersion: 2
-        x: 160
-        y: 95
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 161
+        y: 96
+        width: 13
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -427,12 +427,12 @@ TextureImporter:
       name: Anomaly_anim_10
       rect:
         serializedVersion: 2
-        x: 210
-        y: 96
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 211
+        y: 97
+        width: 12
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -449,12 +449,12 @@ TextureImporter:
       name: Anomaly_anim_11
       rect:
         serializedVersion: 2
-        x: 259
-        y: 97
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 260
+        y: 98
+        width: 12
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -471,12 +471,12 @@ TextureImporter:
       name: Anomaly_anim_12
       rect:
         serializedVersion: 2
-        x: 304
-        y: 95
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 305
+        y: 96
+        width: 12
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -493,12 +493,12 @@ TextureImporter:
       name: Anomaly_anim_13
       rect:
         serializedVersion: 2
-        x: 16
-        y: 63
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 64
+        width: 14
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -515,12 +515,12 @@ TextureImporter:
       name: Anomaly_anim_14
       rect:
         serializedVersion: 2
-        x: 64
-        y: 63
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 64
+        width: 14
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -537,12 +537,12 @@ TextureImporter:
       name: Anomaly_anim_15
       rect:
         serializedVersion: 2
-        x: 110
-        y: 63
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 111
+        y: 64
+        width: 14
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -559,12 +559,12 @@ TextureImporter:
       name: Anomaly_anim_16
       rect:
         serializedVersion: 2
-        x: 161
-        y: 63
-        width: 32
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 162
+        y: 64
+        width: 30
+        height: 16
+      alignment: 9
+      pivot: {x: 0.29379576, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -581,12 +581,12 @@ TextureImporter:
       name: Anomaly_anim_17
       rect:
         serializedVersion: 2
-        x: 212
-        y: 63
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 213
+        y: 64
+        width: 27
+        height: 16
+      alignment: 9
+      pivot: {x: 0.2003869, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -603,12 +603,12 @@ TextureImporter:
       name: Anomaly_anim_18
       rect:
         serializedVersion: 2
-        x: 260
-        y: 63
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 261
+        y: 64
+        width: 27
+        height: 16
+      alignment: 9
+      pivot: {x: 0.16580765, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -625,12 +625,12 @@ TextureImporter:
       name: Anomaly_anim_19
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 33
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -647,12 +647,12 @@ TextureImporter:
       name: Anomaly_anim_20
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 33
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -669,12 +669,12 @@ TextureImporter:
       name: Anomaly_anim_21
       rect:
         serializedVersion: 2
-        x: 17
+        x: 18
         y: 0
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -691,12 +691,12 @@ TextureImporter:
       name: Anomaly_anim_22
       rect:
         serializedVersion: 2
-        x: 66
+        x: 67
         y: 0
-        width: 13
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 11
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -713,12 +713,12 @@ TextureImporter:
       name: Anomaly_anim_23
       rect:
         serializedVersion: 2
-        x: 114
+        x: 115
         y: 0
-        width: 13
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 11
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -735,12 +735,12 @@ TextureImporter:
       name: Anomaly_anim_24
       rect:
         serializedVersion: 2
-        x: 162
+        x: 163
         y: 0
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 11
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -757,12 +757,12 @@ TextureImporter:
       name: Anomaly_anim_25
       rect:
         serializedVersion: 2
-        x: 209
+        x: 210
         y: 0
-        width: 15
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 13
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -779,12 +779,12 @@ TextureImporter:
       name: Anomaly_anim_26
       rect:
         serializedVersion: 2
-        x: 257
+        x: 258
         y: 0
-        width: 16
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 14
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -801,7 +801,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4609f4899040e4b599509eeeadf78de2
     internalID: 0
     vertices: []
     indices: 
@@ -809,7 +809,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Anomaly_anim_0: -4695403823270803760
       Anomaly_anim_1: -1707042515004803634

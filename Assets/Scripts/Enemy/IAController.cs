@@ -81,13 +81,21 @@ public class IAController : MonoBehaviour
             _target = hit.gameObject;
             _characterController2d.SetMoveDirection(GetMoveDirectionFromTarget());
 
-            if (_enableDashOnDetect) _characterController2d.Dash();
-
-            if (_enableJumpOnDetect) _characterController2d.Jump();
+            StartCoroutine(OnDetect());
 
             break;
         }
 
+    }
+
+    private IEnumerator OnDetect()
+    {
+        yield return new WaitForEndOfFrame();
+
+
+        if (_enableDashOnDetect) _characterController2d.Dash();
+
+        if (_enableJumpOnDetect) _characterController2d.Jump();
     }
 
     private void ChaseTarget()
